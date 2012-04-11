@@ -2,6 +2,9 @@
     "name": "comparejs"
   , "version": "0.0.1"
   , "private": true
+  , "dev-dependencies": {
+      "mocha": "1.0.1"
+  }
   , "dependencies": {
       "express": "2.5.8"
     , "gzip": "0.1.0"

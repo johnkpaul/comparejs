@@ -4,14 +4,18 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     lint: {
-      files: ['grunt.js', 'app.js', 'views/**/*.js','routes/**/*.js']
+      files: ['grunt.js', 'app.js','test/**/*.js', 'views/**/*.js','routes/**/*.js']
     },
     test: {
       files: ['test/**/*.js']
     },
+    mocha: {
+      files: ['test/**/*.js']
+    },
+    growl:true,
     watch: {
       files: '<config:lint.files>',
-      tasks: 'lint test'
+      tasks: 'lint mocha'
     },
     jshint: {
       options: {
@@ -28,6 +32,8 @@ module.exports = function(grunt) {
       },
       globals: {
         require:true,
+        describe:true,
+        it:true,
         exports:true,
         module:false,
         __dirname:true,
@@ -36,7 +42,7 @@ module.exports = function(grunt) {
     }
   });
 
-  // Default task.
   grunt.registerTask('default', 'lint test');
+  grunt.loadTasks('tasks');
 
 };
