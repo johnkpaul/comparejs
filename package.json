@@ -4,6 +4,7 @@
   , "private": true
   , "dependencies": {
       "express": "2.5.8"
+    , "q": "0.8.2"
     , "gzip": "0.1.0"
     , "sass": ">= 0.0.1"
     , "jade": ">= 0.0.1"

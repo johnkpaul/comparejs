@@ -1,6 +1,7 @@
 h1= title
 p Welcome to #{title}
-form(action="/gzip")
-    textarea
+form(action="/gzip", method="post")
+    textarea(name="data")
         #{output}
-    button
+    button Submit
+        

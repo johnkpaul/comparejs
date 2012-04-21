@@ -3,12 +3,20 @@
  * GET home page.
  */
 
+var gzip = require('gzip');
+var Q = require('q');
+
 exports.index = function(req, res){
-  res.render('index', {output:"", title: 'Express' })
+  res.render('index', {output:"", title: 'Gzipper' });
 };
+
 exports.gzip = function(req, res){
-  require("gzip")("It's just mind-blowingly awesome. I apologize, and I wish I was more articulate, but it's hard to be articulate when your mind's blown—but in a very good way.", function(err, data){
-  
-    res.render('index', {output:data.length, title: 'Express' })
-  })
+  var data = req.param('data',''),
+      deferred = Q.defer();
+
+  gzip(data,deferred.node());
+
+  deferred.promise.then(function(gzipped){
+    res.render('index', {output:gzipped.length, title: 'Gzipper' });
+  });
 };
